@@ -238,6 +238,7 @@ module CASServer
           #$LOG.close
           $LOG = Logger.new(config[:log][:file])
         end
+        $LOG.formatter = Logger::Formatter.new if config[:log][:formatter_default]
         $LOG.level = Logger.const_get(config[:log][:level]) if config[:log][:level]
       end
 
